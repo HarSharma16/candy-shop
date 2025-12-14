@@ -103,18 +103,23 @@ Notes and troubleshooting
 
 ## c) Screenshots of the final application
 
-To include screenshots of the running application, place image files under `docs/screenshots/` and reference them here. Suggested captures:
 
-- `docs/screenshots/dashboard.png` — the main dashboard showing a grid of sweets.
-- `docs/screenshots/sweet-card.png` — a single sweet card, showing price and `Out of Stock` state when quantity is zero.
-- `docs/screenshots/admin-panel.png` — the admin panel with add/restock/delete functionality.
+<img width="1891" height="908" alt="Screenshot 2025-12-14 020449" src="https://github.com/user-attachments/assets/15137713-41a0-4d11-a1fa-c79f5be46ca0" />
+-  — The main dashboard showing a grid of sweets.
 
-Example Markdown to embed images:
 
-```markdown
-![Dashboard](docs/screenshots/dashboard.png)
-![Sweet Card](docs/screenshots/sweet-card.png)
-![Admin Panel](docs/screenshots/admin-panel.png)
+
+  
+<img width="1879" height="906" alt="Screenshot 2025-12-14 020647" src="https://github.com/user-attachments/assets/94aadeb6-5664-4926-8051-3de49a7d8d9c" />
+- — Showing price and `Out of Stock` state when quantity is zero.
+
+
+
+
+<img width="1892" height="934" alt="Screenshot 2025-12-14 020600" src="https://github.com/user-attachments/assets/f657fef4-041d-4212-a69c-1681ebfeaa35" />
+-  — The admin panel with add/restock/delete functionality.
+
+
 
 
 
