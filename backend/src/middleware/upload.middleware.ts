@@ -1,11 +1,29 @@
 import multer from "multer";
 import path from "path";
 import fs from "fs";
+import os from "os";
 
-// Create uploads directory if it doesn't exist
-const uploadsDir = path.join(__dirname, "../../uploads");
-if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir, { recursive: true });
+// Determine uploads directory (configurable)
+const configuredDir = process.env.UPLOAD_DIR;
+const defaultDir = path.join(__dirname, "../../uploads");
+let uploadsDir = configuredDir || defaultDir;
+
+// Try to create uploads directory; if it fails (e.g. read-only FS in serverless),
+// fall back to OS temp directory so multer still works.
+try {
+  if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+  }
+} catch (err) {
+  console.warn(`Could not create uploads dir at ${uploadsDir}, falling back to OS temp dir. Error:`, err);
+  uploadsDir = path.join(os.tmpdir(), "candy-shop-uploads");
+  try {
+    if (!fs.existsSync(uploadsDir)) {
+      fs.mkdirSync(uploadsDir, { recursive: true });
+    }
+  } catch (err2) {
+    console.warn(`Failed to create fallback uploads dir at ${uploadsDir}. Uploads may fail. Error:`, err2);
+  }
 }
 
 // Configure storage

@@ -16,8 +16,11 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve uploaded images statically
-app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
+// Serve uploaded images statically. Use UPLOAD_DIR if set, otherwise default to
+// project uploads directory so local dev works. If UPLOAD_DIR points to a tmp
+// dir used in serverless, serving may not be necessary; adjust as needed.
+const uploadsPath = process.env.UPLOAD_DIR || path.join(__dirname, "../uploads");
+app.use("/uploads", express.static(uploadsPath));
 
 // Routes
 app.use("/api/auth", authRoutes);
